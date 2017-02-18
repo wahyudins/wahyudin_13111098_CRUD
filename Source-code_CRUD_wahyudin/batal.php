@@ -1,46 +1,3 @@
-<?php 
-
-session_start();
-include 'koneksi.php';
-	if (isset($_POST['login'])) {
-		$username=$_POST['username'];
-		$password= $_POST['password'];
-
-		$sql_query= "select * from user where username ='$username' and password='$password'";
-
-		if (mysql_query($sql_query)) {
-			$num_row=mysql_num_rows(mysql_query($sql_query));
-			if ($num_row ==1) {
-				$_SESSION ['username']=$username;
-				?>
-				<script type="text/javascript">
-					alert('anda berhasil login');
-					window.location.href="halaman_awal.php";
-				</script>
-				<?php 
-			}
-			else { ?>
-
-				<script type="text/javascript">
-					alert('maaf bukan anda');
-					window.location.href="index.php"
-				</script>
-				<?php 
-			}
-		}
-	}
-
-	if (isset($_POST['batal'])) {
-			?>
-			<script type="text/javascript">
-				alert('Hatur Nuhun');
-				window.location.href="batal.php";
-			</script>
-			<?php
-	}
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,32 +41,18 @@ include 'koneksi.php';
 <!--  bagian button   -->
 <div class="container" style="background-color: #b9f6ca">
 	<div class="row" style="height: 486px">
-		<div class="col-md-4">
+		<div class="col-md-2">
 		</div>
 
-		<div class="col-md-4">
-			<br><br><br><br>
-			  <h2>Login</h2>    
-			  <br>
-			  <br>    
-			<form method="post">
-				<div class="form-group form-group-default">
-					<div class="form-group">
-						<label>username</label>
-						<input type="text" style="height: 30px; width: 200px;" class="form-control" name="username" >
-					</div>
-					<div class="form-group">
-						<label>password</label>
-						<input type="password" style="height: 30px; width: 200px;" class="form-control" name="password">
-						<br>
-					<div class="form-group">
-						<button type="submit" style="color: #000000" class="btn btn-info " name="login">Login</button>
-						<button type="submit" style="color: #000000" class="btn btn-danger" name="batal" >Batal</button>
-					</div>
-			</form>
-		</div>
+		<div class="col-md-8">
+			<br><br><br><br><br><br><br><br>
+			<h1 style="text-align: center; color: #e65100" >Terimakasih telah berkunjung !!! <br>   <small style="color: #4a148c"> in web created by wahyudin</small></h1>
+			<br><br><br>
 
-		<div class="col-md-4">
+			<center><a href="index.php"><button style="color: #000000" class="btn btn-info "> Masuk </button></a></center>
+		</div>
+		
+		<div class="col-md-2">
 		</div>
 	</div>
 </div>

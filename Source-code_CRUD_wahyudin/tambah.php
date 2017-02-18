@@ -1,46 +1,3 @@
-<?php 
-
-session_start();
-include 'koneksi.php';
-	if (isset($_POST['login'])) {
-		$username=$_POST['username'];
-		$password= $_POST['password'];
-
-		$sql_query= "select * from user where username ='$username' and password='$password'";
-
-		if (mysql_query($sql_query)) {
-			$num_row=mysql_num_rows(mysql_query($sql_query));
-			if ($num_row ==1) {
-				$_SESSION ['username']=$username;
-				?>
-				<script type="text/javascript">
-					alert('anda berhasil login');
-					window.location.href="halaman_awal.php";
-				</script>
-				<?php 
-			}
-			else { ?>
-
-				<script type="text/javascript">
-					alert('maaf bukan anda');
-					window.location.href="index.php"
-				</script>
-				<?php 
-			}
-		}
-	}
-
-	if (isset($_POST['batal'])) {
-			?>
-			<script type="text/javascript">
-				alert('Hatur Nuhun');
-				window.location.href="batal.php";
-			</script>
-			<?php
-	}
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,8 +12,8 @@ include 'koneksi.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
 </head>
+
 
 <body style="background-color: #eeeeee">
 
@@ -73,42 +30,63 @@ include 'koneksi.php';
 			<div class="page-header">
 			<br><br>
 				<h1>
-					<b>Web</b>   <small style="font-size:25px"> - membuat aplikasi crud</small>  
-				</h1>
+					<b>Web</b>   <small style="font-size:25px"><i> - membuat aplikasi crud</i></small>  
+				</h1><br>
 			</div>
-			<br>
 		</div>
 	</div>
 </div>
 
-<!--  bagian button   -->
+<!--  bagian Header menuu   -->
+<div class="container " style="background-color: #000000">
+	<div class="row" style="font-size: 20px">
+		<div class="col-md-12">
+				<ul class="nav navbar-default" style="color: #1a237e">
+					<li>
+						<a href="index.php">&nbsp;Beranda&nbsp;</a>
+					</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<li >
+						<a href="#">&nbsp;menu 1&nbsp;</a>
+					</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<li >
+						<a href="#">&nbsp;menu 2&nbsp;</a>
+					</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<li >
+						<a href="#">&nbsp;menu 3&nbsp;</a>
+					</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</ul>
+		</div>
+	</div>
+</div>
+
+<!--  bagian spasi warna   -->
+<div class="container" style="background-color: #b9f6ca">
+<br><br><br>
+</div>
+
+<!--  bagian form input pendataan    -->
 <div class="container" style="background-color: #b9f6ca">
 	<div class="row" style="height: 486px">
 		<div class="col-md-4">
 		</div>
-
 		<div class="col-md-4">
-			<br><br><br><br>
-			  <h2>Login</h2>    
-			  <br>
-			  <br>    
-			<form method="post">
-				<div class="form-group form-group-default">
+			<h4 style="color: #1a237e"><i>Tambah data Siswa</i></h4><br>
+			<form action="tambah_proses.php" method="post">
 					<div class="form-group">
-						<label>username</label>
-						<input type="text" style="height: 30px; width: 200px;" class="form-control" name="username" >
+						<label>Nama</label>
+						<input maxlength="10" type="text" style="height: 30px; width: 200px;" class="form-control" name="nama">
 					</div>
 					<div class="form-group">
-						<label>password</label>
-						<input type="password" style="height: 30px; width: 200px;" class="form-control" name="password">
-						<br>
-					<div class="form-group">
-						<button type="submit" style="color: #000000" class="btn btn-info " name="login">Login</button>
-						<button type="submit" style="color: #000000" class="btn btn-danger" name="batal" >Batal</button>
+						<label>NIM</label>
+						<input maxlength="10" type="text" style="height: 30px; width: 200px;" class="form-control" name="nim">
 					</div>
+					<div class="form-group">
+					<label>Alamat</label>            
+	    			<textarea class="form-control" style=" width: 200px;" id="alamat" name="alamat"></textarea>
+	    			</div>
+					<button type="submit" style="color: #000000" class="btn btn-info ">Simpan</button>
 			</form>
 		</div>
-
 		<div class="col-md-4">
 		</div>
 	</div>
